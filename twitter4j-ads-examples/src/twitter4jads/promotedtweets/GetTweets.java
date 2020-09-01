@@ -12,7 +12,7 @@ import java.util.List;
 public class GetTweets extends BaseAdsTest {
     public static void main(String[] args) throws TwitterException {
         TwitterAds ads = getTwitterAdsInstance();
-        BaseAdsListResponse<Tweet> tweets = ads.getTweetsApi().getTweets(accountId, TwitterTweetType.PUBLISHED, null, null, null, null, null, null, null);
+        BaseAdsListResponse<Tweet> tweets = ads.getTweetsApi().getTweets(accountId, TwitterTweetType.PUBLISHED, 1000, null, null, null, null, null, null);
         List<Tweet> data = tweets.getData();
         System.out.println(data);
     }
