@@ -3,12 +3,14 @@ package twitter4jads.models.ads;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.StringJoiner;
 
 /**
  * @author niketkhandelwal
  */
 public class Tweet implements Serializable {
-
+    @SerializedName("card_uri")
+    private String cardUri;
     @SerializedName("id")
     private Long id;
 
@@ -89,4 +91,262 @@ public class Tweet implements Serializable {
 
     @SerializedName("contributors")
     private String contributors;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getIdStr() {
+        return idStr;
+    }
+
+    public void setIdStr(String idStr) {
+        this.idStr = idStr;
+    }
+
+    public String getTweetId() {
+        return tweetId;
+    }
+
+    public void setTweetId(String tweetId) {
+        this.tweetId = tweetId;
+    }
+
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public Boolean getRetweeted() {
+        return retweeted;
+    }
+
+    public void setRetweeted(Boolean retweeted) {
+        this.retweeted = retweeted;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public Long getFavouriteCount() {
+        return favouriteCount;
+    }
+
+    public void setFavouriteCount(Long favouriteCount) {
+        this.favouriteCount = favouriteCount;
+    }
+
+    public Long getInReplyToStatusId() {
+        return inReplyToStatusId;
+    }
+
+    public void setInReplyToStatusId(Long inReplyToStatusId) {
+        this.inReplyToStatusId = inReplyToStatusId;
+    }
+
+    public String getInReplyToStatusIdString() {
+        return inReplyToStatusIdString;
+    }
+
+    public void setInReplyToStatusIdString(String inReplyToStatusIdString) {
+        this.inReplyToStatusIdString = inReplyToStatusIdString;
+    }
+
+    public Long getInReplyToUserId() {
+        return inReplyToUserId;
+    }
+
+    public void setInReplyToUserId(Long inReplyToUserId) {
+        this.inReplyToUserId = inReplyToUserId;
+    }
+
+    public String getInReplyToUserIdString() {
+        return inReplyToUserIdString;
+    }
+
+    public void setInReplyToUserIdString(String inReplyToUserIdString) {
+        this.inReplyToUserIdString = inReplyToUserIdString;
+    }
+
+    public String getInReplyToScreenName() {
+        return inReplyToScreenName;
+    }
+
+    public void setInReplyToScreenName(String inReplyToScreenName) {
+        this.inReplyToScreenName = inReplyToScreenName;
+    }
+
+    public Boolean getTruncated() {
+        return truncated;
+    }
+
+    public void setTruncated(Boolean truncated) {
+        this.truncated = truncated;
+    }
+
+    public Long getRetweetCount() {
+        return retweetCount;
+    }
+
+    public void setRetweetCount(Long retweetCount) {
+        this.retweetCount = retweetCount;
+    }
+
+    public Boolean getPossiblySensitive() {
+        return possiblySensitive;
+    }
+
+    public void setPossiblySensitive(Boolean possiblySensitive) {
+        this.possiblySensitive = possiblySensitive;
+    }
+
+    public Boolean getNullcast() {
+        return nullcast;
+    }
+
+    public void setNullcast(Boolean nullcast) {
+        this.nullcast = nullcast;
+    }
+
+    public String getCreatedAtString() {
+        return createdAtString;
+    }
+
+    public void setCreatedAtString(String createdAtString) {
+        this.createdAtString = createdAtString;
+    }
+
+    public String getScheduledAtString() {
+        return scheduledAtString;
+    }
+
+    public void setScheduledAtString(String scheduledAtString) {
+        this.scheduledAtString = scheduledAtString;
+    }
+
+    public String getScheduledStsatus() {
+        return scheduledStsatus;
+    }
+
+    public void setScheduledStsatus(String scheduledStsatus) {
+        this.scheduledStsatus = scheduledStsatus;
+    }
+
+    public TwitterTweetType getTweetType() {
+        return tweetType;
+    }
+
+    public void setTweetType(TwitterTweetType tweetType) {
+        this.tweetType = tweetType;
+    }
+
+    public Boolean getFavorited() {
+        return favorited;
+    }
+
+    public void setFavorited(Boolean favorited) {
+        this.favorited = favorited;
+    }
+
+    public String getFullText() {
+        return fullText;
+    }
+
+    public void setFullText(String fullText) {
+        this.fullText = fullText;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public TwitterUser getUser() {
+        return user;
+    }
+
+    public void setUser(TwitterUser user) {
+        this.user = user;
+    }
+
+    public String getGeo() {
+        return geo;
+    }
+
+    public void setGeo(String geo) {
+        this.geo = geo;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getContributors() {
+        return contributors;
+    }
+
+    public void setContributors(String contributors) {
+        this.contributors = contributors;
+    }
+
+    public String getCardUri() {
+        return cardUri;
+    }
+
+    public void setCardUri(String cardUri) {
+        this.cardUri = cardUri;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Tweet.class.getSimpleName() + "[", "]")
+                .add("cardUri='" + cardUri + "'")
+                .add("id=" + id)
+                .add("idStr='" + idStr + "'")
+                .add("tweetId='" + tweetId + "'")
+                .add("coordinates='" + coordinates + "'")
+                .add("retweeted=" + retweeted)
+                .add("source='" + source + "'")
+                .add("favouriteCount=" + favouriteCount)
+                .add("inReplyToStatusId=" + inReplyToStatusId)
+                .add("inReplyToStatusIdString='" + inReplyToStatusIdString + "'")
+                .add("inReplyToUserId=" + inReplyToUserId)
+                .add("inReplyToUserIdString='" + inReplyToUserIdString + "'")
+                .add("inReplyToScreenName='" + inReplyToScreenName + "'")
+                .add("truncated=" + truncated)
+                .add("retweetCount=" + retweetCount)
+                .add("possiblySensitive=" + possiblySensitive)
+                .add("nullcast=" + nullcast)
+                .add("createdAtString='" + createdAtString + "'")
+                .add("scheduledAtString='" + scheduledAtString + "'")
+                .add("scheduledStsatus='" + scheduledStsatus + "'")
+                .add("tweetType=" + tweetType)
+                .add("favorited=" + favorited)
+                .add("fullText='" + fullText + "'")
+                .add("lang='" + lang + "'")
+                .add("user=" + user)
+                .add("geo='" + geo + "'")
+                .add("place='" + place + "'")
+                .add("contributors='" + contributors + "'")
+                .toString();
+    }
 }
