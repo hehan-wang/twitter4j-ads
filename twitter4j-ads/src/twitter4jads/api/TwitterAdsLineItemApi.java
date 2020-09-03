@@ -30,13 +30,14 @@ public interface TwitterAdsLineItemApi {
      * @param cursor               (optional) Specify a cursor to retrieve data from a specific page (function automatically handles paging upon iteration when you do not specify cursor value).
      * @param sortByField          (optional) Specify to return the line items according to the sorted parameter given.
      * @param withDeleted          Include deleted results in your request. Defaults to false.
+     * @param withdraft            Include draft results in your request. Defaults to false.
      * @param q                    (optional) A query to scope resource by name.
      * @return Retrieve the line items associated with a specific campaign belonging to the current account.
      * @throws TwitterException
      * @see <a href="https://dev.twitter.com/ads/reference/get/accounts/%3Aaccount_id/line_items">https://dev.twitter.com/ads/reference/get/accounts/%3Aaccount_id/line_items</a>
      */
     BaseAdsListResponseIterable<LineItem> getAllLineItems(String accountId, Optional<Collection<String>> campaignIds, Optional<Collection<String>> lineItemIds,
-                                                          Optional<Collection<String>> fundingInstrumentIds, Optional<Integer> count, boolean withDeleted,
+                                                          Optional<Collection<String>> fundingInstrumentIds, Optional<Integer> count, boolean withDeleted,boolean withdraft,
                                                           String cursor, Optional<LineItemsSortByField> sortByField, Optional<String> q) throws TwitterException;
 
     /**

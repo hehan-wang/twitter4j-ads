@@ -1,6 +1,7 @@
 package twitter4jads.stats;
 
 import com.google.common.collect.Lists;
+import org.joda.time.DateTime;
 import twitter4jads.BaseAdsListResponse;
 import twitter4jads.BaseAdsListResponseIterable;
 import twitter4jads.BaseAdsTest;
@@ -24,14 +25,15 @@ public class GetTweetStatsForAccount extends BaseAdsTest {
         TwitterAds twitterAdsInstance = getTwitterAdsInstance();
         TwitterAdsStatApi statApi = twitterAdsInstance.getStatApi();
         List<TwitterEntityStatistics> twitterEntityStatsList = Lists.newArrayList();
-        long since = 0;
-        long until = 0;
+        long until = DateTime.parse("2020-09-03").getMillis();
+        long since = DateTime.parse("2020-09-02").getMillis();
         try {
-            BaseAdsListResponseIterable<TwitterEntityStatistics> allTwitterEntityStats = statApi.fetchStatsSync("1b83s0", TwitterEntityType.CAMPAIGN, Lists.<String>newArrayList("4u3mr"), since, until, Boolean.TRUE, Granularity.TOTAL, Placement.ALL_ON_TWITTER);
+            BaseAdsListResponseIterable<TwitterEntityStatistics> allTwitterEntityStats = statApi.fetchStatsSync(accountId, TwitterEntityType.PROMOTED_TWEET, Lists.<String>newArrayList("4qjtjc","4qhi5u"), since, until, Boolean.TRUE, Granularity.DAY, Placement.ALL_ON_TWITTER);
             for (BaseAdsListResponse<TwitterEntityStatistics> allTwitterEntityStat : allTwitterEntityStats) {
                 twitterEntityStatsList.addAll(allTwitterEntityStat.getData());
             }
-            System.out.println(twitterEntityStatsList.size());
+            System.out.println(twitterEntityStatsList);
+            System.out.println("size-->" + twitterEntityStatsList.size());
         } catch (TwitterException e) {
             System.err.println(e.getErrorMessage());
         }

@@ -117,7 +117,7 @@ public class TwitterAdsLineItemApiImpl implements TwitterAdsLineItemApi {
 
     @Override
     public BaseAdsListResponseIterable<LineItem> getAllLineItems(String accountId, Optional<Collection<String>> campaignIds, Optional<Collection<String>> lineItemIds,
-                                                                 Optional<Collection<String>> fundingInstrumentIds, Optional<Integer> count, boolean withDeleted,
+                                                                 Optional<Collection<String>> fundingInstrumentIds, Optional<Integer> count, boolean withDeleted, boolean withdraft,
                                                                  String cursor, Optional<LineItemsSortByField> sortByField, Optional<String> q) throws TwitterException {
         TwitterAdUtil.ensureNotNull(accountId, ACCOUNT_ID);
         String campaignIdsAsString = null;
@@ -142,6 +142,8 @@ public class TwitterAdsLineItemApiImpl implements TwitterAdsLineItemApi {
         if (sortByField != null && sortByField.isPresent()) {
             params.add(new HttpParameter(PARAM_SORT_BY, sortByField.get().getField()));
         }
+        params.add(new HttpParameter(PARAM_WITH_DRAFT, withdraft));
+
         final String baseUrl = twitterAdsClient.getBaseAdsAPIUrl() + PREFIX_ACCOUNTS_URI + accountId + PATH_LINE_ITEMS;
         final Type type = new TypeToken<BaseAdsListResponse<LineItem>>() {
         }.getType();

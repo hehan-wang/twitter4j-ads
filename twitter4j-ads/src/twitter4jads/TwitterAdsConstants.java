@@ -20,6 +20,7 @@ public interface TwitterAdsConstants {
     String PREFIX_STATS_ACCOUNTS_URI = CURRENT_VERSION + "/stats/accounts/";
     String PREFIX_STATS_JOB_ACCOUNTS_URI = CURRENT_VERSION + "/stats/jobs/accounts/";
     String PARAM_WITH_DELETED = "with_deleted";
+    String PARAM_WITH_DRAFT = "with_draft";
     String PARAM_WITH_TOTAL_COUNT = "with_total_count";
     String GRANULARITY = "granularity";
     String PARAM_FUNDING_INSTRUMENT_IDS = "funding_instrument_ids";
