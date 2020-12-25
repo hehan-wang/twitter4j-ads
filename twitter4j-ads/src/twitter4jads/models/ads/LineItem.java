@@ -112,6 +112,29 @@ public class LineItem extends TwitterEntity implements Serializable {
     @SerializedName("audience_expansion")
     private String audienceExpansion;
 
+    //appid
+    @SerializedName("android_app_store_identifier")
+    private String androidAppStoreIdentifier;
+
+    @SerializedName("ios_app_store_identifier")
+    private String iosAppStoreIdentifier;
+
+    public String getAndroidAppStoreIdentifier() {
+        return androidAppStoreIdentifier;
+    }
+
+    public void setAndroidAppStoreIdentifier(String androidAppStoreIdentifier) {
+        this.androidAppStoreIdentifier = androidAppStoreIdentifier;
+    }
+
+    public String getIosAppStoreIdentifier() {
+        return iosAppStoreIdentifier;
+    }
+
+    public void setIosAppStoreIdentifier(String iosAppStoreIdentifier) {
+        this.iosAppStoreIdentifier = iosAppStoreIdentifier;
+    }
+
     public String getCreativeSource() {
         return creativeSource;
     }
@@ -370,37 +393,42 @@ public class LineItem extends TwitterEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "LineItem{" +
-                "name='" + name + '\'' +
-                ", bidAmtInMicro=" + bidAmtInMicro +
-                ", campaignId='" + campaignId + '\'' +
-                ", createdAt=" + createdAt +
-                ", currency='" + currency + '\'' +
-                ", goalSettings='" + goalSettings + '\'' +
-                ", matchRelevantPopularQueries=" + matchRelevantPopularQueries +
-                ", objective='" + objective + '\'' +
-                ", deleted=" + deleted +
-                ", placements=" + placements +
-                ", productType=" + productType +
-                ", sentiment=" + sentiment +
-                ", status=" + status +
-                ", webEventTag='" + webEventTag + '\'' +
-                ", suggestedHighCpeBidInMicro=" + suggestedHighCpeBidInMicro +
-                ", suggestedLowCpeBidInMicro=" + suggestedLowCpeBidInMicro +
-                ", targetCpaLocalMicro=" + targetCpaLocalMicro +
-                ", updatedAt=" + updatedAt +
-                ", automaticallySelectBid=" + automaticallySelectBid +
-                ", bidType=" + bidType +
-                ", chargeBy='" + chargeBy + '\'' +
-                ", bidUnit='" + bidUnit + '\'' +
-                ", advertiserDomain='" + advertiserDomain + '\'' +
-                ", advertiserUserId='" + advertiserUserId + '\'' +
-                ", categories=" + Arrays.toString(categories) +
-                ", startTime=" + startTimeInUTC +
-                ", endTime=" + endTimeInUTC +
-                ", optimization='" + optimization + '\'' +
-                ", creativeSource='" + creativeSource + '\'' +
-                ", budget='" + budget + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("LineItem{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", bidAmtInMicro=").append(bidAmtInMicro);
+        sb.append(", campaignId='").append(campaignId).append('\'');
+        sb.append(", createdAt=").append(createdAt);
+        sb.append(", currency='").append(currency).append('\'');
+        sb.append(", goalSettings='").append(goalSettings).append('\'');
+        sb.append(", matchRelevantPopularQueries=").append(matchRelevantPopularQueries);
+        sb.append(", objective='").append(objective).append('\'');
+        sb.append(", deleted=").append(deleted);
+        sb.append(", placements=").append(placements);
+        sb.append(", productType=").append(productType);
+        sb.append(", sentiment=").append(sentiment);
+        sb.append(", webEventTag='").append(webEventTag).append('\'');
+        sb.append(", suggestedHighCpeBidInMicro=").append(suggestedHighCpeBidInMicro);
+        sb.append(", suggestedLowCpeBidInMicro=").append(suggestedLowCpeBidInMicro);
+        sb.append(", targetCpaLocalMicro=").append(targetCpaLocalMicro);
+        sb.append(", updatedAt=").append(updatedAt);
+        sb.append(", automaticallySelectBid=").append(automaticallySelectBid);
+        sb.append(", bidType=").append(bidType);
+        sb.append(", chargeBy='").append(chargeBy).append('\'');
+        sb.append(", bidUnit='").append(bidUnit).append('\'');
+        sb.append(", advertiserDomain='").append(advertiserDomain).append('\'');
+        sb.append(", advertiserUserId='").append(advertiserUserId).append('\'');
+        sb.append(", categories=").append(Arrays.toString(categories));
+        sb.append(", optimization='").append(optimization).append('\'');
+        sb.append(", creativeSource='").append(creativeSource).append('\'');
+        sb.append(", startTimeInUTC=").append(startTimeInUTC);
+        sb.append(", endTimeInUTC=").append(endTimeInUTC);
+        sb.append(", budget=").append(budget);
+        sb.append(", trackingTags=").append(trackingTags);
+        sb.append(", status=").append(status);
+        sb.append(", audienceExpansion='").append(audienceExpansion).append('\'');
+        sb.append(", androidAppStoreIdentifier='").append(androidAppStoreIdentifier).append('\'');
+        sb.append(", iosAppStoreIdentifier='").append(iosAppStoreIdentifier).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
