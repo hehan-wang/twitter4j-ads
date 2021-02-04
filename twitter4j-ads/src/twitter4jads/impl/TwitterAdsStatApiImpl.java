@@ -207,7 +207,8 @@ public class TwitterAdsStatApiImpl implements TwitterAdsStatApi {
             final URL url = new URL(urlString);
             final HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestProperty("Accept-Encoding", "gzip");
-
+            con.setConnectTimeout(twitterAdsClient.getConf().getHttpConnectionTimeout());
+            con.setReadTimeout(twitterAdsClient.getConf().getHttpReadTimeout());
             final BufferedReader reader = new BufferedReader(new InputStreamReader(new GZIPInputStream(con.getInputStream()), "utf-8"));
             final StringBuilder builder = new StringBuilder();
             String line = reader.readLine();
@@ -218,9 +219,8 @@ public class TwitterAdsStatApiImpl implements TwitterAdsStatApi {
             return builder.toString();
         } catch (Exception e) {
             // Throw Exception
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 
     private String getMetrics(TwitterEntityType twitterEntity, TwitterSegmentationType twitterSegmentationType) {

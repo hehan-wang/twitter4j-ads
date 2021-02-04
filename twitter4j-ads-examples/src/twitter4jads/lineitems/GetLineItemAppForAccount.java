@@ -8,32 +8,25 @@ import twitter4jads.TwitterAds;
 import twitter4jads.api.TwitterAdsLineItemApi;
 import twitter4jads.internal.models4j.TwitterException;
 import twitter4jads.models.ads.LineItem;
+import twitter4jads.models.ads.LineItemAppResponse;
 import twitter4jads.models.ads.sort.LineItemsSortByField;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * User: shivraj
  * Date: 12/05/16 2:08 PM.
  */
-public class GetLineItemForAccount extends BaseAdsTest {
+public class GetLineItemAppForAccount extends BaseAdsTest {
 
-    public static void main(String[] args) {
-        TwitterAds twitterAdsInstance = getTwitterAdsInstance();
-        TwitterAdsLineItemApi lineItemApi = twitterAdsInstance.getLineItemApi();
-        List<LineItem> lineItemList = Lists.newArrayList();
-        try {
-            BaseAdsListResponseIterable<LineItem> allLineItems = lineItemApi.getAllLineItems(accountId, null, null, null, Optional.of(1000), true, true, null, Optional.of(LineItemsSortByField.BID_AMOUNT_LOCAL_MICRO), null);
-            for (BaseAdsListResponse<LineItem> allLineItem : allLineItems) {
-                lineItemList.addAll(allLineItem.getData());
-            }
-            System.out.println(lineItemList.size());
-        } catch (TwitterException e) {
-            System.err.println(e.getErrorMessage());
-        }
-
+    public static void main(String[] args) throws TwitterException {
+        TwitterAds client = getTwitterAdsInstance();
+        List<LineItem> res = doPage(cursor -> client.getLineItemApi().getAllLineItems(accountId, null, null, null, Optional.of(1000), true, true, cursor, null, null));
+        System.out.println(res);
     }
-
-
 }
