@@ -74,6 +74,28 @@ public class TwitterAdsStatApiImpl implements TwitterAdsStatApi {
         return twitterAdsClient.executeHttpListRequest(baseUrl, params, type);
     }
 
+    //拉取活跃的广告
+    @Override
+    public BaseAdsListResponseIterable<TwitterActiveEntitiesEntity> fetchActiveEntities(String accountId, TwitterEntityType twitterEntity, long startTime, long endTime) throws TwitterException {
+        TwitterAdUtil.ensureNotNull(accountId, ACCOUNT_ID);
+        TwitterAdUtil.ensureNotNull(twitterEntity, "entity");
+        TwitterAdUtil.ensureNotNull(startTime, "startTime");
+        TwitterAdUtil.ensureNotNull(endTime, "endTime");
+
+        final String startTimeAsString = TwitterAdUtil.convertTimeToZuluFormatAndToUTC(startTime);
+        final String endTimeAsString = TwitterAdUtil.convertTimeToZuluFormatAndToUTC(endTime);
+        final String baseUrl = twitterAdsClient.getBaseAdsAPIUrl() + PREFIX_STATS_ACCOUNTS_URI + accountId + PATH_ACTIVE_ENTITIES;
+
+        final List<HttpParameter> params = new ArrayList<>();
+        params.add(new HttpParameter(PARAM_START_TIME, startTimeAsString));
+        params.add(new HttpParameter(PARAM_ENTITY_TYPE, twitterEntity.name()));
+        params.add(new HttpParameter(PARAM_END_TIME, endTimeAsString));
+
+        final Type type = new TypeToken<BaseAdsListResponse<TwitterActiveEntitiesEntity>>() {
+        }.getType();
+        return twitterAdsClient.executeHttpListRequest(baseUrl, params, type);
+    }
+
     @Override
     public BaseAdsListResponseIterable<TwitterAuctionInsights> fetchAuctionInsights(String accountId, Collection<String> lineItemIds, long startTime,
                                                                                     long endTime, Granularity granularity, Placement placement)

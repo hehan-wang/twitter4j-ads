@@ -13,7 +13,7 @@ import java.util.stream.StreamSupport;
  * Date: 10/05/16 10:49 PM.
  */
 public class BaseAdsTest {
-    public static String accountId = "18ce558da3u";
+    public static String accountId = "18ce558da3u" ;
 
     public static TwitterAds getTwitterAdsInstance() {
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
@@ -22,13 +22,17 @@ public class BaseAdsTest {
                 .setOAuthConsumerSecret("NzxuUBChudFIsOD1qY8R56mLG3ehvMxtmk68ZbGfAdoCDSw8Rx")
                 .setOAuthAccessToken("1291673676434137089-uUvbfpQvh0Ll0t0x1tC8mGmJQ0dNrS")
                 .setOAuthAccessTokenSecret("uarjBikhDm5mvOWQMifoPwDBxfAXfO9LQ1BRHvx0DZ5VP")
-                .setHttpRetryCount(0).setHttpConnectionTimeout(5000);
+                .setHttpRetryCount(0)
+                .setHttpConnectionTimeout(5000)
+                .setHttpStreamingReadTimeout(5000)
+                .setHttpReadTimeout(5000)
+        ;
         return new TwitterAdsFactory(configurationBuilder.build()).getAdsInstance();
     }
 
     public static <T> List<T> doPageIterable(TwitterSender<String, BaseAdsListResponseIterable<T>> sender) {
         List<T> res = new ArrayList<>();
-        String cursor = "";
+        String cursor = "" ;
         do {//有下一页继续请求
             try {
                 BaseAdsListResponseIterable<T> l = sender.send(cursor);
@@ -46,7 +50,7 @@ public class BaseAdsTest {
 
     public static <T> List<T> doPage(TwitterSender<String, BaseAdsListResponseIterable<T>> sender) throws TwitterException {
         List<T> res = new ArrayList<>();
-        String cursor = "";
+        String cursor = "" ;
         do {//有下一页继续请求
             BaseAdsListResponseIterable<T> l = sender.send(cursor);
             if (l.hasData()) {
