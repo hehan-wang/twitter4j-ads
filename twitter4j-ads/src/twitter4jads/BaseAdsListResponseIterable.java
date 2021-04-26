@@ -37,8 +37,8 @@ public class BaseAdsListResponseIterable<T> implements Iterable<BaseAdsListRespo
         this.baseUrl = baseUrl;
         this.baseParameters = baseParameters == null ? Collections.<HttpParameter>emptyList() : Collections.unmodifiableList(baseParameters);
         Gson gson = new Gson();
-
-        this.data = gson.fromJson(response.asString(), type);
+        String str = response.asString();
+        this.data = gson.fromJson(str, type);
         if (this.data == null) {
             this.data = new BaseAdsListResponse<>();
         }

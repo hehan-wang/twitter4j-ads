@@ -3,6 +3,7 @@ package twitter4jads.models.ads;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.StringJoiner;
 
 /**
@@ -16,6 +17,8 @@ public class TwitterActiveEntitiesEntity implements Serializable {
     private String activityStartTime;
     @SerializedName("activity_end_time")
     private String activityEndTime;
+    @SerializedName("placements")
+    private List<String> placements;
 
     public String getEntityId() {
         return entityId;
@@ -41,12 +44,21 @@ public class TwitterActiveEntitiesEntity implements Serializable {
         this.activityEndTime = activityEndTime;
     }
 
+    public List<String> getPlacements() {
+        return placements;
+    }
+
+    public void setPlacements(List<String> placements) {
+        this.placements = placements;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", TwitterActiveEntitiesEntity.class.getSimpleName() + "[", "]")
                 .add("entityId='" + entityId + "'")
                 .add("activityStartTime='" + activityStartTime + "'")
                 .add("activityEndTime='" + activityEndTime + "'")
+                .add("placements=" + placements)
                 .toString();
     }
 }
